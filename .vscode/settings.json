@@ -11,21 +11,17 @@
   "editor.formatOnPaste": true,
   "editor.mouseWheelZoom": true,
   "editor.autoIndent": "none",
-
   // explorer
   "explorer.compactFolders": false,
-
   // workbench
   "workbench.editor.enablePreview": false,
   "workbench.iconTheme": "material-icon-theme",
-
   // prettier
   // "editor.defaultFormatter": "esbenp.prettier-vscode",
   // "prettier.enable": true,
   // "prettier.singleQuote": false,
   // "prettier.tabWidth": 2,
   // "prettier.semi": false,
-
   // terminal
   // "terminal.integrated.fontSize": 16,
   "terminal.integrated.profiles.windows": {
@@ -35,5 +31,8 @@
   },
   "terminal.integrated.defaultProfile.windows": "Git Bash",
   "window.zoomLevel": 0,
-  "cSpell.language": "en,pt-BR"
+  "cSpell.language": "en,pt-BR",
+  "cSpell.words": [
+    "imask"
+  ]
 }
