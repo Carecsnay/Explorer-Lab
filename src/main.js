@@ -139,3 +139,11 @@ const cardNumberPattern = {
 }
 
 const cardNumberMasked = IMask(cardNumber, cardNumberPattern);
+
+/* AULA 03 */
+/* Trabalhando com Eventos! 
+   EventListerer -> fica "escutando" o evento ser chamado.    
+*/
+
+const addButton = document.querySelector('#add-card');
+addButton.addEventListener("click");
