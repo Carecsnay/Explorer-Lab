@@ -140,10 +140,73 @@ const cardNumberPattern = {
 
 const cardNumberMasked = IMask(cardNumber, cardNumberPattern);
 
-/* AULA 03 */
-/* Trabalhando com Eventos! 
-   EventListerer -> fica "escutando" o evento ser chamado.    
+/* AULA 03
+Trabalhando com Eventos! 
+addEventListener -> fica "escutando" o evento ser chamado. A
+função abaixo (do click) é anonima, pois ela não possui um nome 
+definido. */
+
+const addButton = document.querySelector("#add-card");
+addButton.addEventListener("click", () => {
+  alert("Cartão cadastrado com sucesso!");
+});
+
+/* Editando padrões de comportamentos do botão 
+Na função abaixo, ela previne que o submit recarregue a página
 */
 
-const addButton = document.querySelector('#add-card');
-addButton.addEventListener("click");
+document.querySelector("form").addEventListener("submit", (event) => {
+  event.preventDefault();
+})
+
+// Capturando informações do nome para transferir para o cartão 
+
+const cartHolder = document.querySelector("#card-holder");
+cartHolder.addEventListener("input", () => {
+  const ccHolder = document.querySelector(".cc-holder .value");
+
+  // Lógica para ver se o nome do cartão está vazio.
+  ccHolder.innerText = cartHolder.value.length === 0 ? "NOME IMPRESSO NO CARTÃO" : cartHolder.value;
+});
+
+// Capturando informações do CVC para transferir para o cartão
+
+/* Para observar os inputs do IMask, utilizamos o .on (mesma
+lógica do addEventListener). O valor accept é quando o valor 
+digitado satisfaz as regras pre-estabelecidas nas mascaras.*/
+
+securityCodeMasked.on("accept", () => {
+  updateSecurityCode(securityCodeMasked.value);
+});
+
+function updateSecurityCode(code) {
+  const ccSecurity = document.querySelector(".cc-security .value");
+
+  ccSecurity.innerText = code.length === 0 ? "123" : code;
+}
+
+//  Capturando informações do número do cartão para transferir para o cartão
+
+cardNumberMasked.on("accept", () => {
+  // Mudando o tema e bandeira do cartão
+  const cardType = cardNumberMasked.masked.currentMask.cardType
+  setCardType(cardType);
+  //atualizando campo de número do cartão
+  updateCardNumber(cardNumberMasked.value);
+})
+
+function updateCardNumber(number) {
+  const ccNumber = document.querySelector(".cc-number");
+  ccNumber.innerText = number.length === 0 ? "1234 5678 9012 3456" : number;
+}
+
+//  Capturando informações da data de expiração para transferir para o cartão
+
+expirationDateMasked.on("accept", () => {
+  updateExpirationDate(expirationDateMasked.value)
+})
+
+function updateExpirationDate(date) {
+  const ccExpiration = document.querySelector(".cc-extra .value");
+  ccExpiration.innerText = date.length === 0 ? "01/32" : date;
+}
